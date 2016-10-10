@@ -1,0 +1,11 @@
+
+div {
+    display:inline-block;
+    align-content: center; 
+}
+div.producto{
+    border: solid 1px;
+}
+.clearBoth { clear:both; }
+
+
