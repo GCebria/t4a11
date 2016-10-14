@@ -1,36 +1,60 @@
-var prod1 =0;
-var prod2 =0;
-var prod3 =0;
+var cantidad=1;
+var total = 0;
 function anadeCarrito(articuloId){
-    var nodo = document.getElementById(articuloId);
+    /*crear un if que busque un hijo que se llame como el id, si no existe crea, si existe retoca dos párrafos, a unidades
+     * le suma uno
+     */
+    
+    var id = articuloId.id;
+    if (document.getElementById("carrito_"+id)==null){
+    var nodo = document.getElementById(id);
     var rutaImagen = nodo.getElementsByTagName("img")[0].src;
     var texto = nodo.getElementsByTagName("p")[0].firstChild.nodeValue;
     var precioTratado = separarPrecio(texto);
-    
-    if (articuloId.equals("chocolate-limon")){
-        this.prod1=this.prod1+1;
-    }
-    
+    total = total + parseInt(precioTratado); 
+   
     var newNode=document.createElement("div");
-    
+    newNode.setAttribute("id", "carrito_"+id);
     var imagen=document.createElement("img");
         imagen.setAttribute("src", rutaImagen);
-        imagen.setAttribute("width", 75);
-        imagen.setAttribute("height", 37.5);
+        imagen.setAttribute("width", "75px");
+        imagen.setAttribute("height", "37.5px");
     
     var precio=document.createElement("p");
-    var textoPrecio=document.createTextNode("Precio: "+precioTratado + "€");
-    var textoUnidades = document.createTextNode("Unidades: "+ this.prod1);
-//    var textoTotal = document.createTextNode("Total: "+total);
+    var textoPrecio=document.createTextNode("Precio: "+ precioTratado + "€");
+//        this.total = this.total+precioTratado;}
+     
+    var nodocantidad = document.createTextNode("Unidades: "+ this.cantidad);
+     
+    
     precio.appendChild(textoPrecio);
+    
     newNode.appendChild(imagen);
     newNode.appendChild(precio);
-    newNode.appendChild(textoUnidades);
-//    newNode.appendChild(textoTotal);
-    
+    newNode.appendChild(nodocantidad);
+//    newNode.appendChild(textoUnidades);
 
-    document.getElementById("carrito").appendChild(newNode);
+    /*Insertar las compras*/
+   document.getElementById("carrito").appendChild(newNode);
+    }
+    else{
+        
+        this.cantidad++;
+    } 
     
+    
+    
+    /*Insertar el precio total del carro*/
+    
+//    var nodoTotal = document.createElement("div");
+//    var totalPrecio = document.createElement("p");
+//    var parrafo = document.createTextNode("Total: "+ this.total + " €");
+//    
+//    totalPrecio.appendChild(parrafo);
+//    
+//    nodoTotal.appendChild(totalPrecio);
+//    
+//    document.getElemetnById("precioTotal").appendChild(nodoTotal);
 }
 
 function separarPrecio(precio){
@@ -39,5 +63,4 @@ function separarPrecio(precio){
     return parte;
     
 }
-
 

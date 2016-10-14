@@ -1,11 +1,21 @@
 
-div {
-    display:inline-block;
-    align-content: center; 
+#articulos{
+    
+    float:left;
+    clear:both;
 }
+
+#carrito{
+    display: block;
+    float:left;
+    clear:both;
+}
+
+
 div.producto{
+    float:left;
     border: solid 1px;
 }
-.clearBoth { clear:both; }
+
 
 
