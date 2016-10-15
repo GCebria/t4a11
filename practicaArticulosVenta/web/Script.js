@@ -6,11 +6,15 @@ function anadeCarrito(articuloId) {
      */
 
     var id = articuloId.id;
+
+
     /*Comprueba si existe*/
     if (document.getElementById("carrito_" + id) == null) {
 
         /*Recoge los valores*/
         var nodo = document.getElementById(id);
+
+        /*crear una función que aumente el atributo cantidad*/
 
         var rutaImagen = nodo.getElementsByTagName("img")[0].src;
 
@@ -23,18 +27,18 @@ function anadeCarrito(articuloId) {
         /*Creación de nodo*/
         var newNode = document.createElement("div");
         newNode.setAttribute("id", "carrito_" + id);
-
+        newNode.setAttribute("cantidad", "1");
+        /*imagen*/
         var imagen = document.createElement("img");
         imagen.setAttribute("src", rutaImagen);
         imagen.setAttribute("width", "75px");
         imagen.setAttribute("height", "37.5px");
-
+        /*precio*/
         var precio = document.createElement("p");
         var textoPrecio = document.createTextNode("Precio: " + precioTratado + "€");
-
+        /*cantidad*/
         var parrafoCantidad = document.createElement("p");
-        parrafoCantidad.setAttribute("id", "cantidad_" + id);
-        var nodocantidad = document.createTextNode("Unidades: " + this.cantidad);
+        var nodocantidad = document.createTextNode("Unidades: 1");
         parrafoCantidad.appendChild(nodocantidad);
 
         precio.appendChild(textoPrecio);
@@ -46,44 +50,38 @@ function anadeCarrito(articuloId) {
 
         /*Insertar las compras*/
         document.getElementById("carrito").appendChild(newNode);
+        
+
+        mostrarTotal(this.total);
+
+
     } else {
-
-        this.cantidad++;
+        /*Extraer el valor del atributo cantidad, incrementarlo y redefinirlo*/
+        var cantidad = document.getElementById("carrito_" + id).getAttribute("cantidad");
+        var cantidadInt = parseInt(cantidad);
+        cantidadInt++;
+        document.getElementById("carrito_" + id).setAttribute("cantidad", cantidadInt.toString());
+        
+        /*Actualizar el valor*/
         actualizarCantidad(id);
-//        var parrafoCantidadAct = document.createElement("p");
-//        parrafoCantidadAct.setAttribute("id", "cantidadAct_"+id);
-//        var nodocantidad = document.createTextNode("Unidades: " + this.cantidad);
-//        parrafoCantidadAct.appendChild(nodocantidad);
-//        document.replaceChild()
-
-
     }
 
 
+}
+/*Insertar el precio total del carro*/
+function mostrarTotal(total) {
 
-    /*Insertar el precio total del carro*/
+    var nodo = document.getElementById("precioTotal");
+    var parrafo = document.createElement("p");
+    var newNodo = document.createTextNode("Precio total: " + total + " €");
+    parrafo.appendChild(newNodo);
+    nodo.appendChild(parrafo);
 
-//    var nodoTotal = document.createElement("div");
-//    var totalPrecio = document.createElement("p");
-//    var parrafo = document.createTextNode("Total: "+ this.total + " €");
-//    
-//    totalPrecio.appendChild(parrafo);
-//    
-//    nodoTotal.appendChild(totalPrecio);
-//    
-//    document.getElemetnById("precioTotal").appendChild(nodoTotal);
 }
 
 function actualizarCantidad(id) {
-//    var cantidadNew = document.createTextNode("Unidades: "+this.cantidad);
-//    var cantidadOld = document.getElementById("cantidad_"+id).childNodes[0];
-//    var nodo = document.getElementById(id);
-//        var texto = nodo.getElementById("cantidad_"+id).childNodes[0].firstChild.nodeValue;
-//    alert(texto);
-//    cantidadOld.replaceChild(cantidadNew, cantidadOld);
-    var nodo = document.getElementById(id);
-    var texto = nodo.getElementsById("cantidad_"+id).
-    alert(texto);
+    var nodo = document.getElemetnById("carrito_"+id);
+    var nodoCantidad = nodo.getElementsByTagName("p")[0].LastChild;
 }
 
 function separarPrecio(precio) {
@@ -91,4 +89,8 @@ function separarPrecio(precio) {
     var parte = res.split("€")[0];
     return parte;
 
+}
+
+function incrementarCantidad() {
+    /*recoger el nodo cantidad y cambiarlo para que sea mas*/
 }
