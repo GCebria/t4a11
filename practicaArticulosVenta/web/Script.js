@@ -33,7 +33,7 @@ function anadeCarrito(articuloId) {
         var textoPrecio = document.createTextNode("Precio: " + precioTratado + "€");
 
         var parrafoCantidad = document.createElement("p");
-        parrafoCantidad.setAttribute("id", "cantidad_"+id);
+        parrafoCantidad.setAttribute("id", "cantidad_" + id);
         var nodocantidad = document.createTextNode("Unidades: " + this.cantidad);
         parrafoCantidad.appendChild(nodocantidad);
 
@@ -55,7 +55,7 @@ function anadeCarrito(articuloId) {
 //        var nodocantidad = document.createTextNode("Unidades: " + this.cantidad);
 //        parrafoCantidadAct.appendChild(nodocantidad);
 //        document.replaceChild()
-        
+
 
     }
 
@@ -74,15 +74,21 @@ function anadeCarrito(articuloId) {
 //    document.getElemetnById("precioTotal").appendChild(nodoTotal);
 }
 
+function actualizarCantidad(id) {
+//    var cantidadNew = document.createTextNode("Unidades: "+this.cantidad);
+//    var cantidadOld = document.getElementById("cantidad_"+id).childNodes[0];
+//    var nodo = document.getElementById(id);
+//        var texto = nodo.getElementById("cantidad_"+id).childNodes[0].firstChild.nodeValue;
+//    alert(texto);
+//    cantidadOld.replaceChild(cantidadNew, cantidadOld);
+    var nodo = document.getElementById(id);
+    var texto = nodo.getElementsById("cantidad_"+id).
+    alert(texto);
+}
+
 function separarPrecio(precio) {
     var res = precio.split(" ")[1];
     var parte = res.split("€")[0];
     return parte;
 
-}
-
-function actualizarCantidad(id){
-    var cantidadOld = document.getElementById("cantidad_"+id).childNodes[1];
-    var cantidadNew = document.createTextNode("Unidades: "+this.cantidad);
-    cantidadOld.replaceChild(cantidadNew, cantidadOld.childNodes[1]);
 }
