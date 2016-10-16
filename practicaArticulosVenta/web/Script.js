@@ -1,20 +1,20 @@
 var cantidad = 1;
 var total = 0;
 function anadeCarrito(articuloId) {
-    /*crear un if que busque un hijo que se llame como el id, si no existe crea, si existe retoca dos párrafos, a unidades
-     * le suma uno
+    /*Falta:
+     * - Actualizar cantidades:
+     * - Actualizar precio: es necesario que se acceda al precio cada vez que se pulsa y se le sume
      */
 
     var id = articuloId.id;
-
+    
+        mostrarTotal(this.total);
 
     /*Comprueba si existe*/
     if (document.getElementById("carrito_" + id) == null) {
 
         /*Recoge los valores*/
         var nodo = document.getElementById(id);
-
-        /*crear una función que aumente el atributo cantidad*/
 
         var rutaImagen = nodo.getElementsByTagName("img")[0].src;
 
@@ -38,6 +38,7 @@ function anadeCarrito(articuloId) {
         var textoPrecio = document.createTextNode("Precio: " + precioTratado + "€");
         /*cantidad*/
         var parrafoCantidad = document.createElement("p");
+        parrafoCantidad.setAttribute("id", "nodoCantidad");
         var nodocantidad = document.createTextNode("Unidades: 1");
         parrafoCantidad.appendChild(nodocantidad);
 
@@ -52,7 +53,6 @@ function anadeCarrito(articuloId) {
         document.getElementById("carrito").appendChild(newNode);
         
 
-        mostrarTotal(this.total);
 
 
     } else {
@@ -63,7 +63,7 @@ function anadeCarrito(articuloId) {
         document.getElementById("carrito_" + id).setAttribute("cantidad", cantidadInt.toString());
         
         /*Actualizar el valor*/
-        actualizarCantidad(id);
+        actualizarCantidad(id, cantidadInt);
     }
 
 
@@ -79,9 +79,11 @@ function mostrarTotal(total) {
 
 }
 
-function actualizarCantidad(id) {
-    var nodo = document.getElemetnById("carrito_"+id);
-    var nodoCantidad = nodo.getElementsByTagName("p")[0].LastChild;
+function actualizarCantidad(id, cantidadInt) {
+    var nodoTexto = document.createTextNode("Unidades: "+cantidadInt);
+    var nodo = document.getElementById("carrito_"+id);
+    var nodoTextoOld = nodo.getElementById("nodoCantidad")[0].firstChild.nodeValue;
+        alert(nodoTextoOld);
 }
 
 function separarPrecio(precio) {
@@ -89,8 +91,4 @@ function separarPrecio(precio) {
     var parte = res.split("€")[0];
     return parte;
 
-}
-
-function incrementarCantidad() {
-    /*recoger el nodo cantidad y cambiarlo para que sea mas*/
 }
