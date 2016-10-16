@@ -7,8 +7,8 @@ function anadeCarrito(articuloId) {
      */
 
     var id = articuloId.id;
-    
-        mostrarTotal(this.total);
+
+    mostrarTotal(this.total);
 
     /*Comprueba si existe*/
     if (document.getElementById("carrito_" + id) == null) {
@@ -28,31 +28,24 @@ function anadeCarrito(articuloId) {
         var newNode = document.createElement("div");
         newNode.setAttribute("id", "carrito_" + id);
         newNode.setAttribute("cantidad", "1");
+
         /*imagen*/
         var imagen = document.createElement("img");
         imagen.setAttribute("src", rutaImagen);
         imagen.setAttribute("width", "75px");
         imagen.setAttribute("height", "37.5px");
+
         /*precio*/
         var precio = document.createElement("p");
         var textoPrecio = document.createTextNode("Precio: " + precioTratado + "€");
-        /*cantidad*/
-        var parrafoCantidad = document.createElement("p");
-        parrafoCantidad.setAttribute("id", "nodoCantidad");
-        var nodocantidad = document.createTextNode("Unidades: 1");
-        parrafoCantidad.appendChild(nodocantidad);
-
         precio.appendChild(textoPrecio);
 
+        /*cantidad*/
         newNode.appendChild(imagen);
         newNode.appendChild(precio);
-        newNode.appendChild(parrafoCantidad);
-
 
         /*Insertar las compras*/
         document.getElementById("carrito").appendChild(newNode);
-        
-
 
 
     } else {
@@ -61,7 +54,7 @@ function anadeCarrito(articuloId) {
         var cantidadInt = parseInt(cantidad);
         cantidadInt++;
         document.getElementById("carrito_" + id).setAttribute("cantidad", cantidadInt.toString());
-        
+
         /*Actualizar el valor*/
         actualizarCantidad(id, cantidadInt);
     }
@@ -80,10 +73,25 @@ function mostrarTotal(total) {
 }
 
 function actualizarCantidad(id, cantidadInt) {
-    var nodoTexto = document.createTextNode("Unidades: "+cantidadInt);
-    var nodo = document.getElementById("carrito_"+id);
-    var nodoTextoOld = nodo.getElementById("nodoCantidad")[0].firstChild.nodeValue;
-        alert(nodoTextoOld);
+//    var nodoTexto = document.createTextNode("Unidades: "+cantidadInt);
+//    var nodo = document.getElementById("carrito_"+id);
+//    var nodoTextoOld = nodo.getElementById("nodoCantidad")[0].firstChild.nodeValue;
+//        alert(nodoTextoOld);
+       alert(id +" "+cantidadInt);
+    var newNode = document.getElementById("carrito_"+id);
+    
+//    newNode.removeChild(newNode.getElementsByTagName("p")[0]);
+    var parrafoCantidad = document.createElement("p");
+    parrafoCantidad.setAttribute("id", "nodoCantidad");
+    var nodocantidad = document.createTextNode("Unidades: "+cantidadInt);
+    parrafoCantidad.appendChild(nodocantidad);
+    
+    if (newNode.hasChildNodes()==true){
+        newNode.removeChild(newNode.lastChild);
+    }
+    
+    newNode.appendChild(parrafoCantidad);
+    
 }
 
 function separarPrecio(precio) {
