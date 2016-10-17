@@ -1,21 +1,20 @@
 
-#articulos{
+.producto{
+display: inline-block;    
+border: 1px solid black;
     
-    float:left;
-    clear:both;
 }
 
-#carrito{
+.carrito *{
+    display: inline-block;
+    margin: 20px;
+    align: center;
+}
+
+.carrito * p{
     display: block;
-    float:left;
-    clear:both;
+    margin: 0px;
+    align: center;
 }
-
-
-div.producto{
-    float:left;
-    border: solid 1px;
-}
-
 
 
