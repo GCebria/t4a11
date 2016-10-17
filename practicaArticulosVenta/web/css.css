@@ -3,6 +3,7 @@
 display: inline-block;    
 border: 1px solid black;
     padding: 10px; 
+    border-radius: 10px;
 }
 
 .carrito {
@@ -27,6 +28,13 @@ border: 1px solid black;
     display: block;
     margin: 0px;
     align: center;
+}
+
+#precioTotal p{
+    margin: 10px;
+    border: 3px, solid, blue;
+    border-radius: 4px;
+    background-color: red;
 }
 
 
