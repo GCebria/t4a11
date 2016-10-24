@@ -7,6 +7,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,16 +34,13 @@ public class ServletScope3 extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletScope3</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletScope3 at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println("<b>Los parametros establecidos son: </b><br>");
+            out.println("Request: "+(String) request.getAttribute("atributoRequest")+"<br>");
+            out.println("Session: "+(String) request.getSession().getAttribute("atributoSession")+"<br>");
+            out.println("Application: "+ (String) this.getServletContext().getAttribute("atributoApplication")+"<br>");
+            
+        } finally{
+            out.close();
         }
     }
 

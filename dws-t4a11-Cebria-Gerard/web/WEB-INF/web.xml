@@ -12,6 +12,18 @@
         <servlet-name>ServletPeticiones</servlet-name>
         <servlet-class>Servlets.ServletPeticiones</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletScope1</servlet-name>
+        <servlet-class>Servlets.ServletScope1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletScope2</servlet-name>
+        <servlet-class>Servlets.ServletScope2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletScope3</servlet-name>
+        <servlet-class>Servlets.ServletScope3</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PrimerServlet</servlet-name>
         <url-pattern>/PrimerServlet</url-pattern>

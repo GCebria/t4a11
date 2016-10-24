@@ -37,14 +37,9 @@ public class ServletScope1 extends HttpServlet {
         try {
             
             request.setAttribute("atributoRequest", "Prueba de atributo request");
-            request.getSession().setAttribute("atributoSession", "Prueba de atributo en "
-                    + "sesion");
-
-            this.getServletContext().setAttribute("atributoApplication", "Prueba de atributo "
-                    + "en Aplication");
-
-            RequestDispatcher rd = 
-                    this.getServletContext().getRequestDispatcher("/ServletScope2");
+            request.getSession().setAttribute("atributoSession", "Prueba de atributo en sesion");
+            this.getServletContext().setAttribute("atributoApplication", "Prueba de atributo en Aplication");
+            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/ServletScope2");
             
             rd.forward(request, response);
         } finally {

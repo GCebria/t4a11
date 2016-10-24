@@ -38,9 +38,9 @@ public class ServletScope2 extends HttpServlet {
            out.println("<b>Los parametros establecidos son: </b><br>");
            out.println("Request: "+(String)request.getAttribute("atributoRequest")+"<br>");
            out.println("Session: "+
-                   (String)request.getAttribute("atributoSession")+"<br>");
+                   (String)request.getSession().getAttribute("atributoSession")+"<br>");
            out.println("Application: "+(String)this.getServletContext().getAttribute("atributoApplication")+"<br>");
-           out.println("Pulse <a href=\"./ServletScope3\">aqui</a> para pasar a verlos desde la siguietne página");
+           out.println("Pulse <a href=\"./ServletScope3\">aqui</a> para pasar a verlos desde la siguiente página");
         } finally{
             out.close();
         }
